@@ -47,7 +47,8 @@ section {
         margin: auto;
         position: relative;
         z-index: 2;
-        pointer-events: none; /* 👈 O mouse agora atravessa a caixa gigante */
+        pointer-events: none;
+        /* 👈 O mouse agora atravessa a caixa gigante */
     }
 
     & .item {
@@ -221,7 +222,7 @@ section {
                 .information {
                     transform: translateX(200px);
                     transition: 0.7s;
-                    transition-delay: 0.3;
+                    transition-delay: 0.3s;
                     opacity: 0;
                 }
 
@@ -229,11 +230,11 @@ section {
                     transition-delay: 0.5s;
                 }
 
-                &.description {
+                & .description {
                     transition-delay: 0.7s;
                 }
 
-                &.information {
+                & .information {
                     transition-delay: 0.7s;
                 }
 
@@ -261,6 +262,113 @@ section {
                     transform: translateX(0);
                     opacity: 1;
                 }
+            }
+        }
+    }
+}
+
+/* =========================================
+   MEDIA QUERY PARA MOBILE (ATÉ 768px)
+========================================= */
+
+@media (max-width: 768px) {
+    * {
+        overflow-x: hidden;
+        overflow-y: hidden;
+        max-width: 100vh;
+
+    }
+
+    section {
+        height: 100dvh;
+        min-height: 700px;
+    }
+
+    header {
+        top: 20px;
+        left: 0;
+        /* 👈 Desliga o left 50% do desktop */
+        transform: none;
+        /* 👈 Desliga o transform do desktop */
+        width: 100%;
+        /* Ocupa a tela inteira de ponta a ponta */
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        & img {
+            width: 100%;
+            max-width: 250px;
+            /* Diminuí um pouco pra ficar mais elegante no celular */
+            height: auto;
+            object-fit: contain;
+        }
+
+        & nav {
+            display: none;
+        }
+    }
+
+    section {
+        & .item {
+            & .car-img {
+                left: 0;
+                top: 20%;
+                transform: translateY(-50%);
+                justify-content: center;
+
+                & img {
+                    width: 90%;
+                }
+            }
+        }
+
+        & .content {
+            right: 0;
+            top: 40%;
+            height: auto;
+            width: 100%;
+            align-items: center;
+            gap: 15px;
+
+            & .car-information p {
+                text-align: center;
+            }
+
+            & h2 {
+                font-size: 3.8rem;
+                text-align: center;
+            }
+
+            & .description {
+                text-align: center;
+                padding: 0 20px;
+                font-size: 11px;
+            }
+        }
+
+        .arrows {
+            width: 95vw;
+            top: 28%;
+
+            & button {
+                width: 40px;
+                height: 40px;
+            }
+
+            &::before {
+                top: 50%;
+            }
+        }
+
+        .indicators {
+            top: auto;
+            bottom: 20px;
+            align-items: center;
+            height: auto;
+
+            & .number {
+                font-size: 3.5rem;
             }
         }
     }
